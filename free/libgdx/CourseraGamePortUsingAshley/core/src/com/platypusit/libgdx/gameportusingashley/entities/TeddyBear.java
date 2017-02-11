@@ -8,15 +8,18 @@ import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
 import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 
+import static com.platypusit.libgdx.gameportusingashley.components.factory.BoundsBounceableComponentFactory.worldBounceableComponent;
+
 /**
  * Entity for Teddy Bears.
  * Created by alfergon on 30/01/17.
  */
-public class TeddyBear extends Entity{
+public class TeddyBear extends Entity {
 
     public TeddyBear(Texture texture, float x, float y, Vector2 velocity, Sound teddyBounce, Sound teddyShot) {
-        add(new PositionComponent(x,y));
-        add(new VelocityComponent(velocity.x,velocity.y));
+        add(new PositionComponent(x, y));
+        add(new VelocityComponent(velocity.x, velocity.y));
         add(new DrawableComponent(texture));
+        add(worldBounceableComponent);
     }
 }
