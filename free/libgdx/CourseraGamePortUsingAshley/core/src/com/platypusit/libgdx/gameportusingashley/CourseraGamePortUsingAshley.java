@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 import com.platypusit.libgdx.gameportusingashley.entities.Burger;
+import com.platypusit.libgdx.gameportusingashley.entities.FrenchFriesProjectile;
 import com.platypusit.libgdx.gameportusingashley.entities.GummyBearProjectile;
 import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
 import com.platypusit.libgdx.gameportusingashley.systems.*;
@@ -24,8 +25,6 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 	private SpriteBatch batch;
 
     private Texture teddyBearTexture;
-    private static Texture teddyBearProjectileSprite;
-    private static Texture frenchFriesSprite;
     private static Texture explosionSpriteStrip;
 
     private BitmapFont bitmapFont;
@@ -54,8 +53,8 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 		// load textures
         Texture burgerTexture = new Texture("graphics/burger.png");
         teddyBearTexture = new Texture("graphics/teddybear.png");
-        teddyBearProjectileSprite = new Texture("graphics/teddybearprojectile.png");
-        frenchFriesSprite = new Texture("graphics/frenchfries.png");
+        Texture teddyBearProjectileSprite = new Texture("graphics/teddybearprojectile.png");
+        Texture frenchFriesSprite = new Texture("graphics/frenchfries.png");
         explosionSpriteStrip = new Texture("graphics/explosion.png");
 
         // load audio content
@@ -66,8 +65,9 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         teddyBounce = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyBounce.wav"));
         teddyShot = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyShot.wav"));
 
-        // set gummy bear projectile texture
+        // set projectile textures
         GummyBearProjectile.setProjectileTexture(teddyBearProjectileSprite);
+        FrenchFriesProjectile.setProjectileTexture(frenchFriesSprite);
 
         // add the player's burger to the engine
         engine.addEntity(new Burger(burgerTexture, burgerShot));
