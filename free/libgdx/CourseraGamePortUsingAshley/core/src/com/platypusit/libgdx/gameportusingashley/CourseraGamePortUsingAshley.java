@@ -70,7 +70,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         GummyBearProjectile.setProjectileTexture(teddyBearProjectileSprite);
 
         // add the player's burger to the engine
-        engine.addEntity(new Burger(burgerTexture));
+        engine.addEntity(new Burger(burgerTexture, burgerShot));
 
         // spawn bears
         for (int i = 0; i < MAX_BEARS; i++) {
