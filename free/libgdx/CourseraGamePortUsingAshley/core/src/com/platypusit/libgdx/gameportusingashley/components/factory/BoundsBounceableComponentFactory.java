@@ -1,6 +1,5 @@
 package com.platypusit.libgdx.gameportusingashley.components.factory;
 
-import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 import com.platypusit.libgdx.gameportusingashley.components.BoundsBounceableComponent;
 
 /**
@@ -19,10 +18,7 @@ public class BoundsBounceableComponentFactory {
     public static BoundsBounceableComponent createWorldBounceableComponent() {
         BoundsBounceableComponent component = new BoundsBounceableComponent();
 
-        component.bottomBound = 0;
-        component.leftBound = 0;
-        component.topBound = GameConstants.WINDOW_HEIGHT;
-        component.rightBound = GameConstants.WINDOW_WIDTH;
+        BoundedComponentFactory.setWorldBounds(component);
 
         return component;
     }
