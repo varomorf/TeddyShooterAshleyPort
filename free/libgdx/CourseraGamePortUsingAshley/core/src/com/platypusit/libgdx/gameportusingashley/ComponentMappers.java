@@ -13,4 +13,5 @@ public class ComponentMappers {
     public static final ComponentMapper<DrawableComponent> drawable = ComponentMapper.getFor(DrawableComponent.class);
     public static final ComponentMapper<BoundsBounceableComponent> boundsBounceable = ComponentMapper.getFor(BoundsBounceableComponent.class);
     public static final ComponentMapper<ShootingComponent> shooting = ComponentMapper.getFor(ShootingComponent.class);
+    public static final ComponentMapper<TimedShootingComponent> timedShooting = ComponentMapper.getFor(TimedShootingComponent.class);
 }
