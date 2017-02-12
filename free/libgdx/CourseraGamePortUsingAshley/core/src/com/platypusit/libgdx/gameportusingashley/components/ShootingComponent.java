@@ -9,6 +9,7 @@ import com.platypusit.libgdx.gameportusingashley.constant.ProjectileType;
  */
 public class ShootingComponent {
 
+    public boolean isShooting;
     public ProjectileType projectileType;
     public float projectileSpeed;
     public Sound firingSound;
