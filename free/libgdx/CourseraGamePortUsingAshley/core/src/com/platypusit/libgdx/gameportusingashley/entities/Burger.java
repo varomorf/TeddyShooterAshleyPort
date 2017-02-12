@@ -3,6 +3,7 @@ package com.platypusit.libgdx.gameportusingashley.entities;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
+import com.platypusit.libgdx.gameportusingashley.components.PlayerComponent;
 import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
@@ -18,5 +19,6 @@ public class Burger extends Entity {
         add(new PositionComponent(GameConstants.WINDOW_WIDTH / 2, GameConstants.WINDOW_HEIGHT * 0.2f));
         add(new VelocityComponent(0, 0));
         add(new DrawableComponent(texture));
+        add(new PlayerComponent());
     }
 }
