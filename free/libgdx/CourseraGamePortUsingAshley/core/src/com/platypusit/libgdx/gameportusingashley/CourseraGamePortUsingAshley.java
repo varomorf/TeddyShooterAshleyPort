@@ -11,10 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
-import com.platypusit.libgdx.gameportusingashley.systems.BoundsBouncingSystem;
-import com.platypusit.libgdx.gameportusingashley.systems.DrawingSystem;
-import com.platypusit.libgdx.gameportusingashley.systems.MovementSystem;
-import com.platypusit.libgdx.gameportusingashley.systems.ShootingSystem;
+import com.platypusit.libgdx.gameportusingashley.systems.*;
 
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.*;
 
@@ -78,6 +75,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         }
 
 		// add systems
+        engine.addSystem(new TimedShootingSystem());
         engine.addSystem(new ShootingSystem(engine));
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsBouncingSystem());
