@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
+import com.platypusit.libgdx.gameportusingashley.entities.Burger;
 import com.platypusit.libgdx.gameportusingashley.entities.GummyBearProjectile;
 import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
 import com.platypusit.libgdx.gameportusingashley.systems.*;
@@ -26,11 +27,6 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
     private static Texture teddyBearProjectileSprite;
     private static Texture frenchFriesSprite;
     private static Texture explosionSpriteStrip;
-
-
-//    private Burger burger;
-//    private static List<Projectile> projectiles = new ArrayList<>();
-//    List<Explosion> explosions = new ArrayList<>();
 
     private BitmapFont bitmapFont;
 
