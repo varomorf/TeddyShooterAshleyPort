@@ -12,5 +12,7 @@ public class ShootingComponent {
     public ProjectileType projectileType;
     public float projectileSpeed;
     public Sound firingSound;
+    public float projectileSpawningXOffset;
+    public float projectileSpawningYOffset;
 
 }
