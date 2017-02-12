@@ -57,6 +57,9 @@ public class ShootingSystem extends IteratingSystem {
 
             // add projectile entity to engine
             engine.addEntity(projectile);
+
+            // stop shooting
+            shooter.isShooting = false;
         }
     }
 }
