@@ -53,5 +53,6 @@ public class GameConstants {
 
     // spawn location support
     public static final int SPAWN_BORDER_SIZE = 100;
+    public static final int SPAWN_RATIO = 1;
 
 }

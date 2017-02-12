@@ -1,6 +1,7 @@
 package com.platypusit.libgdx.gameportusingashley;
 
 import com.badlogic.ashley.core.Engine;
+import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -24,7 +25,6 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 
 	private SpriteBatch batch;
 
-    private Texture teddyBearTexture;
     private static Texture explosionSpriteStrip;
 
     private BitmapFont bitmapFont;
@@ -40,10 +40,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
     // sound effects
     Sound burgerDamage;
     Sound burgerDeath;
-    Sound burgerShot;
     Sound explosion;
-    Sound teddyBounce;
-    Sound teddyShot;
 
 	@Override
 	public void create () {
@@ -52,7 +49,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 
 		// load textures
         Texture burgerTexture = new Texture("graphics/burger.png");
-        teddyBearTexture = new Texture("graphics/teddybear.png");
+        Texture teddyBearTexture = new Texture("graphics/teddybear.png");
         Texture teddyBearProjectileSprite = new Texture("graphics/teddybearprojectile.png");
         Texture frenchFriesSprite = new Texture("graphics/frenchfries.png");
         explosionSpriteStrip = new Texture("graphics/explosion.png");
@@ -60,10 +57,10 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         // load audio content
         burgerDamage = Gdx.audio.newSound(Gdx.files.internal("audio/BurgerDamage.wav"));
         burgerDeath = Gdx.audio.newSound(Gdx.files.internal("audio/BurgerDeath.wav"));
-        burgerShot = Gdx.audio.newSound(Gdx.files.internal("audio/BurgerShot.wav"));
+        Sound burgerShot = Gdx.audio.newSound(Gdx.files.internal("audio/BurgerShot.wav"));
         explosion = Gdx.audio.newSound(Gdx.files.internal("audio/Explosion.wav"));
-        teddyBounce = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyBounce.wav"));
-        teddyShot = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyShot.wav"));
+        Sound teddyBounce = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyBounce.wav"));
+        Sound teddyShot = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyShot.wav"));
 
         // set projectile textures
         GummyBearProjectile.setProjectileTexture(teddyBearProjectileSprite);
@@ -72,12 +69,8 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         // add the player's burger to the engine
         engine.addEntity(new Burger(burgerTexture, burgerShot));
 
-        // spawn bears
-        for (int i = 0; i < MAX_BEARS; i++) {
-            spawnBear();
-        }
-
 		// add systems
+        engine.addSystem(getBearSpawningSystem(teddyBearTexture, teddyShot));
         engine.addSystem(new TimedShootingSystem());
         engine.addSystem(new ShootingSystem());
         engine.addSystem(new PlayerControlSystem());
@@ -105,33 +98,13 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 		batch.dispose();
 	}
 
-    private void spawnBear() {
-        // generate random location
-        int bearX = getRandomLocation(SPAWN_BORDER_SIZE, WINDOW_WIDTH - SPAWN_BORDER_SIZE);
-        int bearY = getRandomLocation(SPAWN_BORDER_SIZE, WINDOW_HEIGHT - SPAWN_BORDER_SIZE);
+	private EntitySystem getBearSpawningSystem(Texture teddyBearTexture, Sound teddyShot){
+	    BearSpawnSystem system = new BearSpawnSystem();
 
-        // generate random velocity and create a vector with it
-        float velMagnitude = RandomNumberGenerator.nextFloat(BEAR_SPEED_RANGE);
-        if (velMagnitude < MIN_BEAR_SPEED) {
-            velMagnitude = MIN_BEAR_SPEED;
-        }
-        float velAngle = RandomNumberGenerator.nextFloat((float) (2 * Math.PI));
-        float velX = (float) (velMagnitude * Math.cos(velAngle));
-        float velY = (float) (velMagnitude * Math.sin(velAngle));
-        Vector2 bearVelocity = new Vector2(velX, velY);
+	    system.setTeddyBearTexture(teddyBearTexture);
+	    system.setTeddyShot(teddyShot);
 
-        // add new bear to engine
-        engine.addEntity(new TeddyBear(teddyBearTexture, bearX, bearY, bearVelocity, teddyBounce, teddyShot));
+	    return system;
     }
 
-    /**
-     * Gets a random location using the given min and range
-     *
-     * @param min   the minimum
-     * @param range the range
-     * @return the random location
-     */
-    private int getRandomLocation(int min, int range) {
-        return min + RandomNumberGenerator.next(range);
-    }
 }
