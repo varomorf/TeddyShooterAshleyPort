@@ -34,7 +34,7 @@ public class GameConstants {
 
     // burger characteristics
     public static final int BURGER_INITIAL_HEALTH = 100;
-    public static final int BURGER_MOVEMENT_AMOUNT = 10;
+    public static final int BURGER_MOVEMENT_AMOUNT = 200;
     public static final float BURGER_TOTAL_COOLDOWN_SECONDS = 0.5f;
 
     // explosion hard-coded animation info. There are better
