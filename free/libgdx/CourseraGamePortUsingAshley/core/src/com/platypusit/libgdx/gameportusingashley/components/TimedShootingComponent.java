@@ -10,4 +10,8 @@ public class TimedShootingComponent implements Component {
 
     public float timer;
     public float secondsForShooting;
+
+    public TimedShootingComponent(float secondsForShooting) {
+        this.secondsForShooting = secondsForShooting;
+    }
 }

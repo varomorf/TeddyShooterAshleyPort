@@ -15,4 +15,9 @@ public class ShootingComponent implements Component {
     public Sound firingSound;
     public float projectileSpawningYOffset;
 
+    public ShootingComponent(ProjectileType projectileType, int projectileSpawningYOffset, Sound firingSound) {
+        this.projectileType = projectileType;
+        this.projectileSpawningYOffset = projectileSpawningYOffset;
+        this.firingSound = firingSound;
+    }
 }
