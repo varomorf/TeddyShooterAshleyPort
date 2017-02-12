@@ -3,6 +3,7 @@ package com.platypusit.libgdx.gameportusingashley.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.audio.Sound;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.BoundsBounceableComponent;
 import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
@@ -17,16 +18,21 @@ public class BoundsBouncingSystem extends IteratingSystem {
 
     private static final Family family = Family.all(PositionComponent.class, BoundsBounceableComponent.class).get();
 
-    public BoundsBouncingSystem() {
+    private Sound bouncingSound;
+
+    public BoundsBouncingSystem(Sound bouncingSound) {
         super(family);
+        this.bouncingSound = bouncingSound;
     }
 
-    public BoundsBouncingSystem(int priority) {
+    public BoundsBouncingSystem(Sound bouncingSound, int priority) {
         super(family, priority);
+        this.bouncingSound = bouncingSound;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+        boolean hasBounced = false;
         PositionComponent position = ComponentMappers.position.get(entity);
         VelocityComponent velocity = ComponentMappers.velocity.get(entity);
         DrawableComponent drawable = ComponentMappers.drawable.get(entity);
@@ -46,6 +52,8 @@ public class BoundsBouncingSystem extends IteratingSystem {
             // clamp y position
             position.x = Math.max(boundsBouncing.leftBound + halfWidth, position.x);
             position.x = Math.min(boundsBouncing.rightBound - halfWidth, position.x);
+
+            hasBounced = true;
         }
 
         // check vertical bouncing
@@ -55,9 +63,14 @@ public class BoundsBouncingSystem extends IteratingSystem {
             // clamp y position
             position.y = Math.max(boundsBouncing.bottomBound + halfHeight, position.y);
             position.y = Math.min(boundsBouncing.topBound - halfHeight, position.y);
+
+            hasBounced = true;
         }
 
-
+        // play bouncing sound if necessary
+        if (hasBounced) {
+            bouncingSound.play(1);
+        }
     }
 
 }
