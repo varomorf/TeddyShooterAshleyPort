@@ -11,10 +11,10 @@ import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
 /**
- * <p>System for moving the player's burger.</p>
+ * <p>System for controlling the player's burger.</p>
  * Created by Alvaro on 12/02/2017.
  */
-public class PlayerMovementSystem extends EntitySystem {
+public class PlayerControlSystem extends EntitySystem {
 
     private static final Family family = Family.all(PlayerComponent.class).get();
 
@@ -25,6 +25,10 @@ public class PlayerMovementSystem extends EntitySystem {
         // will only be one
         Entity burger = getEngine().getEntitiesFor(family).first();
 
+        handleMovement(burger);
+    }
+
+    protected void handleMovement(Entity burger) {
         VelocityComponent velocity = ComponentMappers.velocity.get(burger);
 
         // move burger using keyboard
