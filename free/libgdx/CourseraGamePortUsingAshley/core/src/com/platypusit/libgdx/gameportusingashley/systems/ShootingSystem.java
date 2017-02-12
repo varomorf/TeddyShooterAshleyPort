@@ -33,6 +33,9 @@ public class ShootingSystem extends IteratingSystem {
         if (shooter.isShooting) {
             Entity projectile;
 
+            // stop shooting
+            shooter.isShooting = false;
+
             // prepare the initial position of the projectile
             PositionComponent position = ComponentMappers.position.get(entity);
             float projectileX = position.x;
@@ -53,9 +56,6 @@ public class ShootingSystem extends IteratingSystem {
 
             // add projectile entity to engine
             getEngine().addEntity(projectile);
-
-            // stop shooting
-            shooter.isShooting = false;
         }
     }
 }

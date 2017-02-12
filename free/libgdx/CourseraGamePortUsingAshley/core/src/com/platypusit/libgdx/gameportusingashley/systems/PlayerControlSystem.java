@@ -5,12 +5,13 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.PlayerComponent;
 import com.platypusit.libgdx.gameportusingashley.components.ShootingComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
+
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.BURGER_TOTAL_COOLDOWN_SECONDS;
 
 /**
  * <p>System for controlling the player's burger.</p>
@@ -20,6 +21,9 @@ public class PlayerControlSystem extends EntitySystem {
 
     private static final Family family = Family.all(PlayerComponent.class).get();
 
+    private float firingTimer;
+    private boolean canFire = true;
+
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
@@ -28,6 +32,8 @@ public class PlayerControlSystem extends EntitySystem {
         Entity burger = getEngine().getEntitiesFor(family).first();
 
         handleMovement(burger);
+
+        firingTimer += deltaTime;
         handleShooting(burger);
     }
 
@@ -54,7 +60,13 @@ public class PlayerControlSystem extends EntitySystem {
     protected void handleShooting(Entity burger) {
         ShootingComponent shooting = ComponentMappers.shooting.get(burger);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (firingTimer >= BURGER_TOTAL_COOLDOWN_SECONDS) {
+            canFire = true;
+        }
+
+        if (canFire && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            canFire = false;
+            firingTimer = 0;
             shooting.isShooting = true;
         }
     }
