@@ -11,6 +11,7 @@ import com.platypusit.libgdx.gameportusingashley.components.ShootingComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
+import static com.badlogic.gdx.Input.Keys.SPACE;
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.BURGER_TOTAL_COOLDOWN_SECONDS;
 
 /**
@@ -60,11 +61,11 @@ public class PlayerControlSystem extends EntitySystem {
     protected void handleShooting(Entity burger) {
         ShootingComponent shooting = ComponentMappers.shooting.get(burger);
 
-        if (firingTimer >= BURGER_TOTAL_COOLDOWN_SECONDS) {
+        if (firingTimer >= BURGER_TOTAL_COOLDOWN_SECONDS || !Gdx.input.isKeyPressed(SPACE)) {
             canFire = true;
         }
 
-        if (canFire && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+        if (canFire && Gdx.input.isKeyPressed(SPACE)) {
             canFire = false;
             firingTimer = 0;
             shooting.isShooting = true;
