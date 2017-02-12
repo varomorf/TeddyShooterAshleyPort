@@ -1,10 +1,7 @@
 package com.platypusit.libgdx.gameportusingashley;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import com.platypusit.libgdx.gameportusingashley.components.BoundsBounceableComponent;
-import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
-import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
-import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
+import com.platypusit.libgdx.gameportusingashley.components.*;
 
 /**
  * Mapper for components.
@@ -15,4 +12,5 @@ public class ComponentMappers {
 		public static final ComponentMapper<VelocityComponent> velocity = ComponentMapper.getFor(VelocityComponent.class);
 		public static final ComponentMapper<DrawableComponent> drawable = ComponentMapper.getFor(DrawableComponent.class);
 		public static final ComponentMapper<BoundsBounceableComponent> boundsBounceable = ComponentMapper.getFor(BoundsBounceableComponent.class);
+    public static final ComponentMapper<ShootingComponent> shooting = ComponentMapper.getFor(ShootingComponent.class);
 }
