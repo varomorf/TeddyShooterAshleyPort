@@ -14,6 +14,7 @@ import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
 import com.platypusit.libgdx.gameportusingashley.systems.BoundsBouncingSystem;
 import com.platypusit.libgdx.gameportusingashley.systems.DrawingSystem;
 import com.platypusit.libgdx.gameportusingashley.systems.MovementSystem;
+import com.platypusit.libgdx.gameportusingashley.systems.ShootingSystem;
 
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.*;
 
@@ -77,6 +78,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         }
 
 		// add systems
+        engine.addSystem(new ShootingSystem(engine));
         engine.addSystem(new MovementSystem());
         engine.addSystem(new BoundsBouncingSystem());
         engine.addSystem(new DrawingSystem(batch));
