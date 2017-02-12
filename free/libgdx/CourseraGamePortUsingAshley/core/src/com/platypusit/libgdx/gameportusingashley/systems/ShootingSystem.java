@@ -36,11 +36,13 @@ public class ShootingSystem extends IteratingSystem {
 
         if (shooter.isShooting) {
             Entity projectile;
-            PositionComponent position = ComponentMappers.position.get(entity);
 
+            // prepare the initial position of the projectile
+            PositionComponent position = ComponentMappers.position.get(entity);
             float projectileX = position.x;
             float projectileY = position.y + shooter.projectileSpawningYOffset;
 
+            // create projectile entity depending on its type
             switch (shooter.projectileType) {
                 case TEDDY_BEAR:
                     projectile = new GummyBearProjectile(projectileX, projectileY);
@@ -50,6 +52,10 @@ public class ShootingSystem extends IteratingSystem {
                     break;
             }
 
+            // play shooting sound
+            shooter.firingSound.play(1);
+
+            // add projectile entity to engine
             engine.addEntity(projectile);
         }
     }
