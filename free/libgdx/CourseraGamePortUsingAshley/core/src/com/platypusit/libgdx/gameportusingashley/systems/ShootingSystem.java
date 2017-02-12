@@ -1,12 +1,12 @@
 package com.platypusit.libgdx.gameportusingashley.systems;
 
-import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
 import com.platypusit.libgdx.gameportusingashley.components.ShootingComponent;
+import com.platypusit.libgdx.gameportusingashley.entities.FrenchFriesProjectile;
 import com.platypusit.libgdx.gameportusingashley.entities.GummyBearProjectile;
 
 /**
@@ -44,7 +44,7 @@ public class ShootingSystem extends IteratingSystem {
                     projectile = new GummyBearProjectile(projectileX, projectileY);
                     break;
                 default:
-                    projectile = null; //TODO change to player projectile
+                    projectile = new FrenchFriesProjectile(projectileX, projectileY);
                     break;
             }
 
