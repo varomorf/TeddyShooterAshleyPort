@@ -6,9 +6,6 @@ package com.platypusit.libgdx.gameportusingashley.components;
  */
 public class TimedShootingComponent extends TimedComponent {
 
-    public float timer;
-    public float secondsForShooting;
-
     public TimedShootingComponent(float secondsForShooting) {
         super(secondsForShooting);
     }
