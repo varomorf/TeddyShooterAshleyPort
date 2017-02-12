@@ -1,12 +1,14 @@
 package com.platypusit.libgdx.gameportusingashley.entities;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
-import com.platypusit.libgdx.gameportusingashley.components.PlayerComponent;
-import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
-import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
-import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
+import com.platypusit.libgdx.gameportusingashley.components.*;
+
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.FRENCH_FRIES_PROJECTILE_OFFSET;
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.WINDOW_HEIGHT;
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.WINDOW_WIDTH;
+import static com.platypusit.libgdx.gameportusingashley.constant.ProjectileType.FRENCH_FRIES;
 
 /**
  * <p>Entity for the player's burger.</p>
@@ -15,10 +17,11 @@ import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
  */
 public class Burger extends Entity {
 
-    public Burger(Texture texture) {
-        add(new PositionComponent(GameConstants.WINDOW_WIDTH / 2, GameConstants.WINDOW_HEIGHT * 0.2f));
+    public Burger(Texture texture, Sound firingSound) {
+        add(new PositionComponent(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.2f));
         add(new VelocityComponent(0, 0));
         add(new DrawableComponent(texture));
         add(new PlayerComponent());
+        add(new ShootingComponent(FRENCH_FRIES, FRENCH_FRIES_PROJECTILE_OFFSET, firingSound));
     }
 }
