@@ -1,6 +1,6 @@
 package com.platypusit.libgdx.gameportusingashley.components.factory;
 
-import com.platypusit.libgdx.gameportusingashley.GameConstants;
+import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 import com.platypusit.libgdx.gameportusingashley.components.BoundsBounceableComponent;
 
 /**

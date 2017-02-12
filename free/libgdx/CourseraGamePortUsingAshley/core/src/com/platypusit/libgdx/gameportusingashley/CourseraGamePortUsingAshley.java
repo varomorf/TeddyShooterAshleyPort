@@ -1,7 +1,6 @@
 package com.platypusit.libgdx.gameportusingashley;
 
 import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -10,14 +9,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
 import com.platypusit.libgdx.gameportusingashley.systems.BoundsBouncingSystem;
 import com.platypusit.libgdx.gameportusingashley.systems.DrawingSystem;
 import com.platypusit.libgdx.gameportusingashley.systems.MovementSystem;
 
-import java.util.List;
-
-import static com.platypusit.libgdx.gameportusingashley.GameConstants.*;
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.*;
 
 public class CourseraGamePortUsingAshley extends ApplicationAdapter {
 

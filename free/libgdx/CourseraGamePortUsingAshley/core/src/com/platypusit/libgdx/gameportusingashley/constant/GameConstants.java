@@ -1,4 +1,4 @@
-package com.platypusit.libgdx.gameportusingashley;
+package com.platypusit.libgdx.gameportusingashley.constant;
 
 import com.badlogic.gdx.math.Vector2;
 
