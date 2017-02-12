@@ -18,16 +18,12 @@ public class ShootingSystem extends IteratingSystem {
 
     private static final Family family = Family.all(PositionComponent.class, ShootingComponent.class).get();
 
-    private Engine engine;
-
-    public ShootingSystem(Engine engine) {
+    public ShootingSystem() {
         super(family);
-        this.engine = engine;
     }
 
-    public ShootingSystem(int priority, Engine engine) {
+    public ShootingSystem(int priority) {
         super(family, priority);
-        this.engine = engine;
     }
 
     @Override
@@ -56,7 +52,7 @@ public class ShootingSystem extends IteratingSystem {
             shooter.firingSound.play(1);
 
             // add projectile entity to engine
-            engine.addEntity(projectile);
+            getEngine().addEntity(projectile);
 
             // stop shooting
             shooter.isShooting = false;
