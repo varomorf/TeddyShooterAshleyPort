@@ -11,7 +11,7 @@ import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 
 /**
- * <p>System for bounds bouncing.</p>
+ * <p>System for bouncing off bounds.</p>
  * Created by Alvaro on 12/02/2017.
  */
 public class BoundsBouncingSystem extends IteratingSystem {
@@ -49,9 +49,6 @@ public class BoundsBouncingSystem extends IteratingSystem {
         if (left <= boundsBouncing.leftBound || right >= boundsBouncing.rightBound) {
             // bounce off horizontally
             velocity.x *= -1;
-            // clamp y position
-            position.x = Math.max(boundsBouncing.leftBound + halfWidth, position.x);
-            position.x = Math.min(boundsBouncing.rightBound - halfWidth, position.x);
 
             hasBounced = true;
         }
@@ -60,9 +57,6 @@ public class BoundsBouncingSystem extends IteratingSystem {
         if (bottom <= boundsBouncing.bottomBound || top >= boundsBouncing.topBound) {
             // bounce off vertically
             velocity.y *= -1;
-            // clamp y position
-            position.y = Math.max(boundsBouncing.bottomBound + halfHeight, position.y);
-            position.y = Math.min(boundsBouncing.topBound - halfHeight, position.y);
 
             hasBounced = true;
         }
