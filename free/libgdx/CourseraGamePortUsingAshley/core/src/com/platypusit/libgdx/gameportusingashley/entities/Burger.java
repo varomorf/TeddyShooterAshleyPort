@@ -4,10 +4,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.platypusit.libgdx.gameportusingashley.components.*;
+import com.platypusit.libgdx.gameportusingashley.components.factory.BoundedComponentFactory;
 
-import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.FRENCH_FRIES_PROJECTILE_OFFSET;
-import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.WINDOW_HEIGHT;
-import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.WINDOW_WIDTH;
+import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.*;
 import static com.platypusit.libgdx.gameportusingashley.constant.ProjectileType.FRENCH_FRIES;
 
 /**
@@ -23,5 +22,6 @@ public class Burger extends Entity {
         add(new DrawableComponent(texture));
         add(new PlayerComponent());
         add(new ShootingComponent(FRENCH_FRIES, FRENCH_FRIES_PROJECTILE_OFFSET, firingSound));
+        add(BoundedComponentFactory.worldBoundedComponent);
     }
 }
