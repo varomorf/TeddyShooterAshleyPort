@@ -32,18 +32,20 @@ public class BoundsBouncingSystem extends IteratingSystem {
         DrawableComponent drawable = ComponentMappers.drawable.get(entity);
         BoundsBounceableComponent boundsBouncing = ComponentMappers.boundsBounceable.get(entity);
 
-        float left = position.x - (drawable.texture.getWidth() / 2);
-        float right = position.x + (drawable.texture.getWidth() / 2);
-        float bottom = position.y - (drawable.texture.getHeight() / 2);
-        float top = position.y + (drawable.texture.getHeight() / 2);
+        int halfWidth = drawable.texture.getWidth() / 2;
+        float left = position.x - halfWidth;
+        float right = position.x + halfWidth;
+        int halfHeight = drawable.texture.getHeight() / 2;
+        float bottom = position.y - halfHeight;
+        float top = position.y + halfHeight;
 
         // check horizontal bouncing
         if (left <= boundsBouncing.leftBound || right >= boundsBouncing.rightBound) {
             // bounce off horizontally
             velocity.x *= -1;
             // clamp y position
-            position.x = Math.max(boundsBouncing.leftBound, position.x);
-            position.x = Math.min(boundsBouncing.rightBound, position.x);
+            position.x = Math.max(boundsBouncing.leftBound + halfWidth, position.x);
+            position.x = Math.min(boundsBouncing.rightBound - halfWidth, position.x);
         }
 
         // check vertical bouncing
@@ -51,8 +53,8 @@ public class BoundsBouncingSystem extends IteratingSystem {
             // bounce off vertically
             velocity.y *= -1;
             // clamp y position
-            position.y = Math.max(boundsBouncing.bottomBound, position.y);
-            position.y = Math.min(boundsBouncing.topBound, position.y);
+            position.y = Math.max(boundsBouncing.bottomBound + halfHeight, position.y);
+            position.y = Math.min(boundsBouncing.topBound - halfHeight, position.y);
         }
 
 
