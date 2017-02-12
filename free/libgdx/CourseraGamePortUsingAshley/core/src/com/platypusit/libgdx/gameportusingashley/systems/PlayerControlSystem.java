@@ -5,8 +5,10 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.PlayerComponent;
+import com.platypusit.libgdx.gameportusingashley.components.ShootingComponent;
 import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
@@ -26,6 +28,7 @@ public class PlayerControlSystem extends EntitySystem {
         Entity burger = getEngine().getEntitiesFor(family).first();
 
         handleMovement(burger);
+        handleShooting(burger);
     }
 
     protected void handleMovement(Entity burger) {
@@ -47,4 +50,13 @@ public class PlayerControlSystem extends EntitySystem {
             velocity.x = 0;
         }
     }
+
+    protected void handleShooting(Entity burger) {
+        ShootingComponent shooting = ComponentMappers.shooting.get(burger);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            shooting.isShooting = true;
+        }
+    }
+
 }
