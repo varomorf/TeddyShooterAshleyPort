@@ -12,9 +12,7 @@ public class ShootingComponent implements Component {
 
     public boolean isShooting;
     public ProjectileType projectileType;
-    public float projectileSpeed;
     public Sound firingSound;
-    public float projectileSpawningXOffset;
     public float projectileSpawningYOffset;
 
 }
