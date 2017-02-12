@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
+import com.platypusit.libgdx.gameportusingashley.entities.GummyBearProjectile;
 import com.platypusit.libgdx.gameportusingashley.entities.TeddyBear;
 import com.platypusit.libgdx.gameportusingashley.systems.*;
 
@@ -68,6 +69,9 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         explosion = Gdx.audio.newSound(Gdx.files.internal("audio/Explosion.wav"));
         teddyBounce = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyBounce.wav"));
         teddyShot = Gdx.audio.newSound(Gdx.files.internal("audio/TeddyShot.wav"));
+
+        // set gummy bear projectile texture
+        GummyBearProjectile.setProjectileTexture(teddyBearProjectileSprite);
 
         // spawn bears
         for (int i = 0; i < MAX_BEARS; i++) {
