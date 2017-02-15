@@ -5,10 +5,7 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.audio.Sound;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
-import com.platypusit.libgdx.gameportusingashley.components.BoundsBounceableComponent;
-import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
-import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
-import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
+import com.platypusit.libgdx.gameportusingashley.components.*;
 
 /**
  * <p>System for bouncing off bounds.</p>
@@ -16,7 +13,7 @@ import com.platypusit.libgdx.gameportusingashley.components.VelocityComponent;
  */
 public class BoundsBouncingSystem extends IteratingSystem {
 
-    private static final Family family = Family.all(PositionComponent.class, BoundsBounceableComponent.class).get();
+    private static final Family family = Family.all(PositionComponent.class, BoundedComponent.class, BoundsBounceableComponent.class).get();
 
     private Sound bouncingSound;
 
@@ -36,7 +33,7 @@ public class BoundsBouncingSystem extends IteratingSystem {
         PositionComponent position = ComponentMappers.position.get(entity);
         VelocityComponent velocity = ComponentMappers.velocity.get(entity);
         DrawableComponent drawable = ComponentMappers.drawable.get(entity);
-        BoundsBounceableComponent boundsBouncing = ComponentMappers.boundsBounceable.get(entity);
+        BoundedComponent bounds = ComponentMappers.bounds.get(entity);
 
         int halfWidth = drawable.texture.getWidth() / 2;
         float left = position.x - halfWidth;
@@ -46,7 +43,7 @@ public class BoundsBouncingSystem extends IteratingSystem {
         float top = position.y + halfHeight;
 
         // check horizontal bouncing
-        if (left <= boundsBouncing.leftBound || right >= boundsBouncing.rightBound) {
+        if (left <= bounds.leftBound || right >= bounds.rightBound) {
             // bounce off horizontally
             velocity.x *= -1;
 
@@ -54,7 +51,7 @@ public class BoundsBouncingSystem extends IteratingSystem {
         }
 
         // check vertical bouncing
-        if (bottom <= boundsBouncing.bottomBound || top >= boundsBouncing.topBound) {
+        if (bottom <= bounds.bottomBound || top >= bounds.topBound) {
             // bounce off vertically
             velocity.y *= -1;
 
