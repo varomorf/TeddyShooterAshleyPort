@@ -3,6 +3,7 @@ package com.platypusit.libgdx.gameportusingashley.systems;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
@@ -10,21 +11,22 @@ import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
 import com.platypusit.libgdx.gameportusingashley.components.UITextComponent;
 
 /**
- * System for drawing entities.
- * Created by alfergon on 30/01/17.
+ * <p>System for drawing UIComponents.</p>
+ * Created by Alvaro on 19/02/2017.
  */
-public class DrawingSystem extends IteratingSystem {
+public class UIDrawingSystem extends IteratingSystem {
 
     private static final Family family = Family.all(PositionComponent.class, UITextComponent.class).get();
 
     private SpriteBatch batch;
+    private BitmapFont bitmapFont = new BitmapFont();
 
-    public DrawingSystem(SpriteBatch batch) {
+    public UIDrawingSystem(SpriteBatch batch) {
         super(family);
         this.batch = batch;
     }
 
-    public DrawingSystem(int priority, SpriteBatch batch) {
+    public UIDrawingSystem(int priority, SpriteBatch batch) {
         super(family, priority);
         this.batch = batch;
     }
@@ -32,10 +34,8 @@ public class DrawingSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         PositionComponent position = ComponentMappers.position.get(entity);
-        DrawableComponent drawable = ComponentMappers.drawable.get(entity);
+        UITextComponent uiText = ComponentMappers.uiText.get(entity);
 
-        float x = position.x - (drawable.texture.getWidth() / 2);
-        float y = position.y - (drawable.texture.getHeight() / 2);
-        batch.draw(drawable.texture, x, y);
+        bitmapFont.draw(batch, uiText.text, position.x, position.y);
     }
 }
