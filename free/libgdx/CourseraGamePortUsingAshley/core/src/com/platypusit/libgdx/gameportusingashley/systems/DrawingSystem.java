@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.platypusit.libgdx.gameportusingashley.ComponentMappers;
 import com.platypusit.libgdx.gameportusingashley.components.DrawableComponent;
 import com.platypusit.libgdx.gameportusingashley.components.PositionComponent;
-import com.platypusit.libgdx.gameportusingashley.components.UITextComponent;
 
 /**
  * System for drawing entities.
@@ -15,7 +14,7 @@ import com.platypusit.libgdx.gameportusingashley.components.UITextComponent;
  */
 public class DrawingSystem extends IteratingSystem {
 
-    private static final Family family = Family.all(PositionComponent.class, UITextComponent.class).get();
+    private static final Family family = Family.all(PositionComponent.class, DrawableComponent.class).get();
 
     private SpriteBatch batch;
 
