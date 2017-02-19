@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.platypusit.libgdx.gameportusingashley.components.*;
 import com.platypusit.libgdx.gameportusingashley.components.factory.BoundedComponentFactory;
+import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.*;
 import static com.platypusit.libgdx.gameportusingashley.constant.ProjectileType.FRENCH_FRIES;
@@ -23,5 +24,6 @@ public class Burger extends Entity {
         add(new PlayerComponent());
         add(new ShootingComponent(FRENCH_FRIES, FRENCH_FRIES_PROJECTILE_OFFSET, firingSound));
         add(BoundedComponentFactory.worldBoundedComponent);
+        add(new DamageableComponent(GameConstants.BURGER_INITIAL_HEALTH));
     }
 }
