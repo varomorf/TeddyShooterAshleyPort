@@ -79,6 +79,7 @@ public class CourseraGamePortUsingAshley extends ApplicationAdapter {
         engine.addSystem(new BoundsBouncingSystem(teddyBounce));
         engine.addSystem(new ProjectileDamageSystem());
         engine.addSystem(new DrawingSystem(batch));
+        engine.addSystem(new UIDrawingSystem(batch));
 	}
 
     @Override
