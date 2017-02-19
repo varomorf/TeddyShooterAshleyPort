@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.platypusit.libgdx.gameportusingashley.RandomNumberGenerator;
 import com.platypusit.libgdx.gameportusingashley.components.*;
+import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
 import static com.platypusit.libgdx.gameportusingashley.components.SpawnableBearComponent.spawnableBearComponent;
 import static com.platypusit.libgdx.gameportusingashley.components.factory.BoundedComponentFactory.worldBoundedComponent;
@@ -28,6 +29,8 @@ public class TeddyBear extends Entity {
         add(new ShootingComponent(TEDDY_BEAR, -TEDDY_BEAR_PROJECTILE_OFFSET, teddyShot));
         add(new TimedShootingComponent(getInitialTimer(), BEAR_FIRING_RATE_RANGE));
         add(spawnableBearComponent);
+        add(new DamageableComponent(GameConstants.FRENCH_FRIES_PROJECTILE_DAMAGE));
+        add(EnemyComponent.enemyComponent);
     }
 
     protected float getInitialTimer() {
