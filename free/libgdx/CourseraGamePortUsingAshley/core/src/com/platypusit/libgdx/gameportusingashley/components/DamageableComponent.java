@@ -10,4 +10,8 @@ import com.badlogic.ashley.core.Component;
 public class DamageableComponent implements Component{
 
     public int health;
+
+    public DamageableComponent(int health) {
+        this.health = health;
+    }
 }
