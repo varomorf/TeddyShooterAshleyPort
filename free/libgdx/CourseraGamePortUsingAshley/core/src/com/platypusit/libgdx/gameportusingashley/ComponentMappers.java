@@ -17,4 +17,5 @@ public class ComponentMappers {
     public static final ComponentMapper<TimedShootingComponent> timedShooting = ComponentMapper.getFor(TimedShootingComponent.class);
     public static final ComponentMapper<DamagingComponent> damaging = ComponentMapper.getFor(DamagingComponent.class);
     public static final ComponentMapper<DamageableComponent> damageable = ComponentMapper.getFor(DamageableComponent.class);
+    public static final ComponentMapper<UITextComponent> uiText = ComponentMapper.getFor(UITextComponent.class);
 }
