@@ -1,6 +1,7 @@
 package com.platypusit.libgdx.gameportusingashley.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.platypusit.libgdx.gameportusingashley.components.EnemyComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.FRENCH_FRIES_PROJECTILE_SPEED;
@@ -18,6 +19,6 @@ public class FrenchFriesProjectile extends Projectile {
     }
 
     public FrenchFriesProjectile(float x, float y) {
-        super(x, y, FRENCH_FRIES_PROJECTILE_SPEED, projectileTexture, GameConstants.FRENCH_FRIES_PROJECTILE_DAMAGE);
+        super(x, y, FRENCH_FRIES_PROJECTILE_SPEED, projectileTexture, GameConstants.FRENCH_FRIES_PROJECTILE_DAMAGE, EnemyComponent.class);
     }
 }

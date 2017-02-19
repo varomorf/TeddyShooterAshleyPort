@@ -1,6 +1,7 @@
 package com.platypusit.libgdx.gameportusingashley.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.platypusit.libgdx.gameportusingashley.components.PlayerComponent;
 import com.platypusit.libgdx.gameportusingashley.constant.GameConstants;
 
 import static com.platypusit.libgdx.gameportusingashley.constant.GameConstants.TEDDY_BEAR_PROJECTILE_SPEED;
@@ -18,6 +19,6 @@ public class GummyBearProjectile extends Projectile {
     }
 
     public GummyBearProjectile(float x, float y) {
-        super(x, y, -TEDDY_BEAR_PROJECTILE_SPEED, projectileTexture, GameConstants.BEAR_DAMAGE);
+        super(x, y, -TEDDY_BEAR_PROJECTILE_SPEED, projectileTexture, GameConstants.BEAR_DAMAGE, PlayerComponent.class);
     }
 }
