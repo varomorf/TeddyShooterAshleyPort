@@ -15,4 +15,6 @@ public class ComponentMappers {
     public static final ComponentMapper<BoundedComponent> bounds = ComponentMapper.getFor(BoundedComponent.class);
     public static final ComponentMapper<ShootingComponent> shooting = ComponentMapper.getFor(ShootingComponent.class);
     public static final ComponentMapper<TimedShootingComponent> timedShooting = ComponentMapper.getFor(TimedShootingComponent.class);
+    public static final ComponentMapper<DamagingComponent> damaging = ComponentMapper.getFor(DamagingComponent.class);
+    public static final ComponentMapper<DamageableComponent> damageable = ComponentMapper.getFor(DamageableComponent.class);
 }
