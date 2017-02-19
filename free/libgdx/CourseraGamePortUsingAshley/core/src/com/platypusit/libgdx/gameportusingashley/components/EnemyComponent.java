@@ -7,4 +7,5 @@ import com.badlogic.ashley.core.Component;
  * Created by Alvaro on 19/02/2017.
  */
 public class EnemyComponent implements Component {
+    public static EnemyComponent enemyComponent = new EnemyComponent();
 }
